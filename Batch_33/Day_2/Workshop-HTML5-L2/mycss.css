@@ -1,0 +1,10 @@
+#favoriteSongs li::before {
+    content: "\2665";
+    display: inline-block;
+    margin-right: 5px;
+    list-style-type: none;
+  }
+
+  #fabio{
+    list-style-type: none;
+  }

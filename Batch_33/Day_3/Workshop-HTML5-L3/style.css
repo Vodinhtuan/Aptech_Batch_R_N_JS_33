@@ -1,0 +1,70 @@
+*{  /*  universal selector */
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.session_six{
+    text-align: center;
+    text-decoration: line-through;
+}
+.hepuc{
+    word-spacing: 30px;
+    line-height: 30;
+}
+
+.artical-item img,
+.artical-item p{
+    display: inline-block;
+    height: auto;
+}
+
+.button{
+    /* background-color:      property
+     blueviolet;              value
+     .button                  selector
+     tương đối đơn vị % là lấy % của thằng thẻ cha ví dụ thẻ % dùng trong div con của body thì là 50% màn hình
+     4 type of selector
+     - type name selector    (p)
+     - class selector  (.)
+     - id selector   (#)
+     - universal selector  (*) đại diện cho tất cả element
+      */
+    background-color: blueviolet; 
+    color: white; 
+    text-align: center;
+    text-transform: uppercase;
+    border-radius: 50px;
+    width: 100px;
+}
+#hello{
+    color: #d70404;
+}
+
+
+a:hover{
+    color: red;
+}
+
+a:visited{
+    color: chartreuse;
+}
+ span.all{   /*thẻ span có class all */
+    color: blueviolet;
+}
+
+div span:first-child{
+    color: blue;
+}
+
+ul.ott li:nth-child(2n+2){    /* 2n là đứa con thứ 2, +2 thì vẫn là số chẵn*/
+    color: #d70404;
+}
+
+.nav li{
+    content: "";
+    display: inline-block;
+
+}
+
