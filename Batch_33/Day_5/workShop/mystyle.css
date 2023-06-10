@@ -1,0 +1,33 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+table{
+    border-collapse: collapse;
+    width: 500px;
+}
+ table tr th,
+ table tr td{
+    border: 1px solid #333;
+    padding: 5px 8px;
+ }
+
+ table tr td:first-child{
+    width: 40px;
+    text-align: center;
+ }
+
+ tbody tr:nth-child(2n + 1 ){
+    background: #57e14d;
+ }
+
+btn{
+    padding: 12px 18px;
+    text-align: center;
+    border: 0;
+    background-color: #57e14d;
+    color: aliceblue;
+    font-weight: bold;
+    outline: 0;
+}

@@ -1,0 +1,25 @@
+/* respon là điểm gãy trên giao diện test của inspect*/
+
+/* desktop */
+@media screen and(max-width: 780px) {
+    .container{
+        padding: 0 15px;
+    }
+}
+
+/* tablet */
+@media screen and(max-width: 769px) {
+    .container{
+        padding: 0 15px;
+    }
+    .main content{
+        overflow: hidden;
+        /* phần nào vượt ra thì ẩn đi */
+    }
+}
+
+@media (max-width: 768px) {
+    .mx-auto {
+        margin-left: 0 !important;
+    }
+}

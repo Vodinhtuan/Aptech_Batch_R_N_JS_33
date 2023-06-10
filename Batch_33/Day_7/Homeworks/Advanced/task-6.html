@@ -1,0 +1,42 @@
+<script>
+    var taiKhoan = 1000000; // Giá trị tài khoản khởi đầu
+
+while (true) {
+  var chucNang = prompt("VIRTUAL ATM\nAn N: De nop tien\nAn R: De rut tien\nAn X: De xem so du\nVui long chon chuc nang:");
+
+  switch (chucNang) {
+    case 'N':
+      var soTienNop = parseFloat(prompt("Nhap so tien can nop:"));
+      if (isNaN(soTienNop) || soTienNop <= 0) {
+        console.log("So tien nhap khong hop le");
+      } else {
+        taiKhoan += soTienNop;
+        console.log("Da nap", soTienNop, "dong vao tai khoan");
+      }
+      break;
+      
+    case 'R':
+      var soTienRut = parseFloat(prompt("Nhap so tien can rut:"));
+      if (isNaN(soTienRut) || soTienRut <= 0) {
+        console.log("So tien nhap khong hop le");
+      } else if (soTienRut > taiKhoan) {
+        console.log("So tien rut vuot qua so du tai khoan");
+      } else if (soTienRut % 50000 !== 0) {
+        console.log("So tien rut phai la boi so cua 50.000");
+      } else {
+        taiKhoan -= soTienRut;
+        console.log("Da rut", soTienRut, "dong tu tai khoan");
+      }
+      break;
+      
+    case 'X':
+      console.log("So du tai khoan:", taiKhoan, "dong");
+      break;
+      
+    default:
+      console.log("Chuc nang khong hop le");
+      break;
+  }
+}
+
+</script>

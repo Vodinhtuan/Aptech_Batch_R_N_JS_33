@@ -67,4 +67,46 @@ ul.ott li:nth-child(2n+2){    /* 2n là đứa con thứ 2, +2 thì vẫn là s�
     display: inline-block;
 
 }
+/* 
+Task 1 */
+ul {
+    margin-bottom: 50px;
+}
 
+ul li:first-child {
+    color: blue;
+}
+
+ul li:last-child {
+    color: red;
+}
+
+ul li:nth-child(2n) {
+    background-color: #fafafa;
+}
+
+ul li {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+ul li:hover {
+    color: #06F;
+}
+
+ul li:nth-child(4) {
+    color: red;
+}
+
+ul li:first-child {
+    font-weight: bold;
+    font-size: 32px;
+    color: #111;
+}
+
+h1 {
+    font-size: 28px;
+    text-transform: uppercase;
+    text-align: center;
+}

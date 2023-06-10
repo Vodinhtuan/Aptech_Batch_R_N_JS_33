@@ -1,0 +1,26 @@
+<script>
+    function tinhTienDien(soChuDien) {
+  var soTien = 0;
+
+  if (soChuDien <= 100) {
+    soTien = soChuDien * 550;
+  } else if (soChuDien <= 150) {
+    soTien = 100 * 550 + (soChuDien - 100) * 900;
+  } else if (soChuDien <= 200) {
+    soTien = 100 * 550 + 50 * 900 + (soChuDien - 150) * 1210;
+  } else if (soChuDien <= 300) {
+    soTien = 100 * 550 + 50 * 900 + 50 * 1210 + (soChuDien - 200) * 1340;
+  } else {
+    soTien = 100 * 550 + 50 * 900 + 50 * 1210 + 100 * 1340 + (soChuDien - 300) * 1400;
+  }
+
+  return soTien;
+}
+
+// Ví dụ sử dụng hàm tinhTienDien
+var soChuDien = prompt("Nhập số chữ điện dung trong một tháng:");
+var tienDien = tinhTienDien(parseInt(soChuDien));
+
+console.log("Số tiền phải trả cho nhà máy điện là:", tienDien, "đồng");
+
+</script>

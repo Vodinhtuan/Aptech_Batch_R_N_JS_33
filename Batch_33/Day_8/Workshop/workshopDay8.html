@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="workshopDay8.css" />
+  </head>
+  <body>
+    <p>Enter number A:</p>
+    <input id="numberA" type="text" placeholder="Enter number A: ">
+    <p>Enter number B:</p>
+    <input id="numberB" type="text" placeholder="Enter number A: ">
+    <button>Math</button>
+
+    <script>
+                  // function student(name, age, email, gender, location, mobile){
+                  // this.name = name;
+                  // this.age = age;
+                  // this.email = email;
+                  // this.gender = gender;
+                  // this.location = location;
+                  // this.mobile = mobile;
+                  // }
+                  // let studentB = {name: "Nguyễn Văn B", age: 19, email: "all@gmail.com"}
+                  // let studentA = new student("Nguyễn Văn A", 18, "Aaa@gmail.com", "Nam", "Đà Nẵng", 090955234);
+                  // console.log(studentA);
+                  // console.log(studentB);
+                  // let A = 8;
+                  // console.log('<<== A ==>>', A);
+                  // // update studetB / change name
+                  // studentB = {...studentB, name: "Ban C"};
+                  // // update studentB / add location and mobile
+                  // studentB = {...studentB, location: "QuangNam"};
+                  // studentB = {...studentB, mobile: 0905347446}
+                  // console.log('<<== studentB ==>>', studentB);
+
+                  // let studentD = {name: "Name D"};
+                  // // studentD = Object.assign(studentD, gender: "Nam");
+
+
+                  // Task 1:
+                  // Tạo các hàm tính các phép tính + - * / hai số mong muốn. In ra màn hình hoặc console giá trị phép tính.
+                  function sum(a, b){
+                      return a + b;
+                  }
+                  function Subtraction (a, b){
+                      return a - b;
+                  }
+
+                  // Task 2:
+                  // Tạo một chương trình tính toán đơn giản với 2 số.
+                    // Sử dụng các phép tính: cộng, trừ, nhân, chia
+                    // Bằng cách tạo giao diện html với:
+                    // input có name: a
+                    // input có name: b
+                    // select có name: op (với quy ước add = cộng, subtract = trừ, multiply = nhân, divide = chia, modulus = chia lấy dư)
+                    // In ra kết quả của phép tính
+
+                function math(a, b){
+                    a = document.getElementById(numberA);
+                    b = document.getElementById(numberB);
+                    return a + b;
+                }
+
+                console.log(math());
+
+                // Task 3
+                // Tạo 2 Đối tượng (Object) là studentA, studentB và mô tả các đặc tính của đối tượng như tên, 
+                // tuổi, giới tính, ngày sinh, chiều cao, cân nặng, quốc tịch. Tổng quát lên thì student nào 
+                // cũng tuân theo profile nói trên.
+
+                function student(name, age, email, gender, location, mobile){
+                  this.name = name;
+                  this.age = age;
+                  this.email = email;
+                  this.gender = gender;
+                  this.location = location;
+                  this.mobile = mobile;
+                }
+
+    </script>
+  </body>
+</html>
