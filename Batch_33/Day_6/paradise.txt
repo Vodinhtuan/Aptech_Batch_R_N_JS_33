@@ -1,0 +1,28 @@
+// HuyTT
+
+@Query(value = "SELECT c.id, c.customerCode, c.name, c.gender, c.dateOfBirth, c.phone, c.identityCard, COALESCE(COUNT(con.id), 0) " +
+            "FROM Customer c " +
+            "LEFT JOIN Contract con ON c.id = con.customer.id " +
+            "WHERE ((CONCAT(c.customerCode, c.name, c.phone, c.identityCard) LIKE %?1%) " +
+            "AND (?2 IS NULL OR c.dateOfBirth = ?2) " +
+            "AND (?3 IS NULL OR c.gender = ?3)) " +
+            "AND c.isFlag = FALSE " +
+            "GROUP BY c.id")
+    Page<Object[]> getAllWithRequirement(String valueReceived, LocalDate searchDateOfBirth, Integer searchGender, Pageable pageable);
+
+thêm COALESCE(COUNT(con.id), 0)
+
+// TuanVD
+customerList.html
+line 205 - 207
+<a type="button" class="icon" [routerLink]="['/admin/customer/update', customer?.id]">
+                <i class="uil uil-pen"></i>
+              </a>
+
+customeUpdate.ts
+ngOnInit(): void {
+    this.activatedRoute.paramMap.subscribe((params) => {
+      this.id = +params.get('id'); // Lấy giá trị id từ URL và chuyển đổi thành số
+      this.customerService.getCustomerById(this.id).subscribe((next) => {
+        console.log(next);
+        this.customer = next;
