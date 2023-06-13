@@ -1,0 +1,153 @@
+<script>
+    Task 1
+    Please implement a method to list all the numbers smaller than 1000 in Fibonacci sequence (0, 1, 1, 2, 3, 5, 8, 13 …...) 
+    then output the sum of these number.
+
+function calculateSum(n)
+{
+    let fibo = [];
+    if (n <= 0)
+    return 0;
+ 
+    fibo[0] = 0;
+    fibo[1] = 1;
+ 
+    let sum = fibo[0] + fibo[1];
+ 
+    for(let i = 2; i < n; i++)
+    {
+        fibo[i] = fibo[i - 1] +
+                    fibo[i - 2];
+        sum += fibo[i];
+    }
+ 
+    return sum;
+}
+    console.log(calculateSum(1000));
+    
+Task 2
+randomly pick unduplicated 95 numbers from the natural numbers of 1~100, put them into an int array of length 95, 
+please program to find 5 numbers that are not put into the array, and print them.
+
+function findMissingNumbers() {
+  const allNumbers = Array.from({ length: 100 }, (_, i) => i + 1);
+  const randomNumbers = [];
+  const missingNumbers = [];
+  while (randomNumbers.length < 95) {
+    const randomNumber = Math.floor(Math.random() * 100) + 1;
+    if (!randomNumbers.includes(randomNumber)) {
+      randomNumbers.push(randomNumber);
+    }
+  }
+  for (let i = 1; i <= 100; i++) {
+    if (!randomNumbers.includes(i)) {
+      missingNumbers.push(i);
+    }
+  }
+  return missingNumbers.slice(0, 5); 
+}
+const missingNumbers = findMissingNumbers();
+console.log("Missing numbers:", missingNumbers);
+
+Task 3
+
+Please implement a class: StringHelper, it should have the following features, 
+Concat()
+SubString() 
+Distinct()
+Contains()
+Requirements and limitations:
+1) Cannot use built-in methods in C#, Java language.      
+2) Need to clearly declare class structure (Members, Methods)
+3) Consider about performance.
+
+using System.Collections.Generic;
+
+public class StringHelper
+{
+    private string str;
+
+    public StringHelper(string input)
+    {
+        str = input;
+    }
+
+    public string Concat(string other)
+    {
+        char[] result = new char[str.Length + other.Length];
+        for (int i = 0; i < str.Length; i++)
+        {
+            result[i] = str[i];
+        }
+        for (int i = 0; i < other.Length; i++)
+        {
+            result[str.Length + i] = other[i];
+        }
+        return new string(result);
+    }
+
+    public string SubString(int startIndex, int length)
+    {
+        char[] result = new char[length];
+        for (int i = 0; i < length; i++)
+        {
+            result[i] = str[startIndex + i];
+        }
+        return new string(result);
+    }
+
+    public string Distinct()
+    {
+        HashSet<char> distinctSet = new HashSet<char>();
+        char[] result = new char[str.Length];
+        int index = 0;
+        for (int i = 0; i < str.Length; i++)
+        {
+            if (!distinctSet.Contains(str[i]))
+            {
+                distinctSet.Add(str[i]);
+                result[index] = str[i];
+                index++;
+            }
+        }
+        return new string(result, 0, index);
+    }
+
+    public bool Contains(string search)
+    {
+        for (int i = 0; i <= str.Length - search.Length; i++)
+        {
+            bool found = true;
+            for (int j = 0; j < search.Length; j++)
+            {
+                if (str[i + j] != search[j])
+                {
+                    found = false;
+                    break;
+                }
+            }
+            if (found)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+}
+ 
+string input = "Hello";
+StringHelper helper = new StringHelper(input);
+
+string concatenated = helper.Concat(" World");
+string subString = helper.SubString(1, 3);
+string distinct = helper.Distinct();
+bool contains = helper.Contains("lo");
+
+Console.WriteLine("Concatenated: " + concatenated); 
+Console.WriteLine("Substring: " + subString); 
+Console.WriteLine("Distinct: " + distinct); 
+Console.WriteLine("Contains 'lo': " + contains); 
+
+
+
+</script>
