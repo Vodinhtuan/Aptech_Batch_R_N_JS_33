@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .form-container {
+        border: 2px solid #ccc;
+        padding: 20px;
+        width: 400px;
+        max-width: 100%;
+      }
+
+      label {
+        display: inline-block;
+        margin-bottom: 10px;
+      }
+
+      input[type="text"],
+      select {
+        width: 100%;
+        padding: 5px;
+        font-size: 16px;
+      }
+
+      input[type="radio"] {
+        margin-right: 5px;
+      }
+
+      .gender-labels {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+
+      .gender-labels label {
+        margin-right: 10px;
+      }
+
+      #submitBtn {
+        margin-top: 10px;
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+
+      #submitBtn:hover {
+        background-color: #45a049;
+      }
+
+      .error {
+        color: red;
+        margin-bottom: 10px;
+      }
+      @media (max-width: 480px) {
+        .form-group {
+          display: block;
+          margin-bottom: 10px;
+        }
+
+        .form-group label {
+          display: block;
+          margin-bottom: 5px;
+        }
+
+        .form-group input {
+          display: block;
+          width: 100%;
+          box-sizing: border-box;
+        }
+
+        .form-group:nth-last-child(2) {
+          margin-bottom: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="form-container">
+        <h1 style="text-align: center">Create a new Customer</h1>
+        <form id="addCustomerForm" onsubmit="return validateForm()">
+          <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+
+          <div>
+            <label for="mobile">Mobile:</label>
+            <input type="text" id="mobile" name="mobile" required />
+          </div>
+
+          <div>
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email" required />
+          </div>
+
+          <div>
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="address" required />
+          </div>
+
+          <div>
+            <label for="age">Age:</label>
+            <input type="text" id="age" name="age" required />
+          </div>
+
+          <div class="gender-labels">
+            <label for="gender">Gender:</label>
+            <input type="radio" id="male" name="gender" value="male" required />
+            <label for="male">Male</label>
+
+            <input
+              type="radio"
+              id="female"
+              name="gender"
+              value="female"
+              required
+            />
+            <label for="female">Female</label>
+          </div>
+
+          <label for="province">Province/City:</label>
+          <select id="province" name="province" required>
+            <option value="">Select Province/City</option>
+            <option value="province1">Da Nang</option>
+            <option value="province2">Hue</option>
+            <option value="province3">Quang Nam</option>
+          </select>
+          <div style="text-align: center">
+            <input
+              type="submit"
+              id="submitBtn"
+              value="Submit"
+              style="margin-top: 10px"
+            />
+          </div>
+        </form>
+      </div>
+    </div>
+    <script>
+      function validateForm() {
+        var name = document.getElementById("name").value;
+        var mobile = document.getElementById("mobile").value;
+        var email = document.getElementById("email").value;
+        var address = document.getElementById("address").value;
+        var age = document.getElementById("age").value;
+        var gender = document.querySelector('input[name="gender"]:checked');
+        var province = document.getElementById("province").value;
+
+        var errorMessages = [];
+
+        if (name === "") {
+          errorMessages.push("Name is required");
+        }
+
+        if (mobile === "") {
+          errorMessages.push("Mobile is required");
+        } else if (!/^[0-9]{10}$/.test(mobile)) {
+          errorMessages.push(
+            "Mobile must be 10 characters and only include numbers 0-9"
+          );
+        }
+
+        if (email === "") {
+          errorMessages.push("Email is required");
+        } else if (!validateEmail(email)) {
+          errorMessages.push("Invalid email address");
+        }
+
+        if (address === "") {
+          errorMessages.push("Address is required");
+        }
+
+        if (age === "") {
+          errorMessages.push("Age is required");
+        } else if (isNaN(age) || age < 18 || age > 100) {
+          errorMessages.push("Age must be a number between 18 and 100");
+        }
+
+        if (!gender) {
+          errorMessages.push("Gender is required");
+        }
+
+        if (province === "") {
+          errorMessages.push("Province/City is required");
+        }
+
+        if (errorMessages.length > 0) {
+          var errorContainer = document.createElement("div");
+          errorContainer.className = "error";
+          errorContainer.innerHTML =
+            "<ul>" +
+            errorMessages
+              .map(function (message) {
+                return "<li>" + message + "</li>";
+              })
+              .join("") +
+            "</ul>";
+          var form = document.getElementById("addCustomerForm");
+          form.insertBefore(errorContainer, form.firstChild);
+          return false;
+        }
+
+        var customer = {
+          name: name,
+          mobile: mobile,
+          email: email,
+          address: address,
+          age: age,
+          gender: gender ? gender.value : "",
+          province: province,
+        };
+
+        localStorage.setItem("customer", JSON.stringify(customer));
+
+        return true;
+      }
+
+      function validateEmail(email) {
+        var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailPattern.test(email);
+      }
+    </script>
+  </body>
+</html>

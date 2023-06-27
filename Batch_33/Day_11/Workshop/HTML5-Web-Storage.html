@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // them moi
+        sessionStorage.setItem('Tuan', 'Huy' );
+        // sessionStorage.setItem(key, value);
+
+        // xoa the key
+        // sessionStorage.removeItem('Tuan');
+
+        // xoa all key
+        //  sessionStorage.clear();
+
+        // lay lai: retrieve
+        //var item = sessionStorage.getItem(key);
+
+        localStorage.setItem('Tuan', 'Huy');
+
+        let value = localStorage.getItem('Tuan');
+        console.log(value);
+
+        // localStorage khi tạo tag và tắt tag thì key và value vẫn sẽ còn, nó sẽ tôn tại cho đến khi chúng ta xoá nó đi, tắt máy vẫn còn
+        // sessionStorage chỉ tồn tại theo phiên, khi tắt tag thì mất 
+
+
+
+
+    </script>
+    
+</body>
+</html>
